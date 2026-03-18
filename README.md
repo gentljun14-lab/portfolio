@@ -35,16 +35,16 @@ IoT 센서 기반 행동 인식과 AI 피드백을 결합한 **능동형 루틴 
 ## Technical Keywords
 
 **Backend / Infra**  
-Python, FastAPI, Flask, Docker, Kubernetes, Kafka, MySQL, PostgreSQL
+Python, Docker, Kubernetes, Kafka
 
 **AI / Data**  
-Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch
+Pandas, NumPy, TensorFlow : 단순 경험
 
 **Embedded / IoT**  
 Raspberry Pi, Arduino, Sensor Integration
 
 **Tools**  
-Git, GitHub, Linux, Notion, Figma
+Git, GitHub, Linux, Notion
 
 ---
 
