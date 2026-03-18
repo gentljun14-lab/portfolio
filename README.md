@@ -6,7 +6,7 @@
 
 ## Project Index
 
-### 1. [Connected Car Telemetry](./connected-car-telemetry/README.md)
+### 1. [Connected Car Telemetry](./k8s_connected-car-telemetry/README.md)
 실시간 차량 텔레메트리 데이터를 안정적으로 수집·저장·조회하기 위한 **CQRS 기반 관제 아키텍처** 프로젝트
 
 - **기간**: 2026.02.24 ~ 2025.03.13
