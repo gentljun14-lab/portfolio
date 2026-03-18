@@ -3,11 +3,29 @@
 
 CQRS 패턴을 기반으로 설계된 차량 텔레메트리 실시간 관리 시스템입니다. 대량의 차량 데이터를 실시간으로 수신(Command)하고, 효율적인 조회(Query)를 위해 데이터 저장소와 처리 경로를 분리하여 고가용성을 확보했습니다.
 
+```mermaid
+graph LR
+    Vehicle(차량 단말/Generator) --> Ingest[Ingest API]
+    Ingest --> Kafka((Kafka))
+    
+    subgraph "Write Path"
+        Kafka --> MongoConsumer[Mongo Consumer]
+        MongoConsumer --> MongoDB[(MongoDB)]
+    end
+    
+    subgraph "Read Path"
+        Kafka --> RedisConsumer[Redis Consumer]
+        RedisConsumer --> Redis[(Redis)]
+        Redis --> QueryAPI[Query API]
+    end
+    
+    QueryAPI --> Frontend[React Frontend]
+```
 
 
 ## 🏗️ System Architecture & Data Flow
 
-시스템은 책임 분리를 위해 **Command(쓰기)**와 **Query(읽기)** 영역으로 나뉘며, Kafka를 통해 비동기적으로 데이터를 동기화합니다.
+시스템은 책임 분리를 위해 **Command(쓰기)** 와 **Query(읽기)** 영역으로 나뉘며, Kafka를 통해 비동기적으로 데이터를 동기화합니다.
 
 ### 📥 [Command] 데이터 수신 및 저장
 * **Ingest API (FastAPI):** 차량 시뮬레이터로부터 `POST /api/query/telemetry` 요청을 통해 상태 데이터를 수신합니다.
