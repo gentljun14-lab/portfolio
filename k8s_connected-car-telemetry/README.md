@@ -2,24 +2,9 @@
 
 차량 텔레메트리 데이터를 실시간으로 수집·저장·조회하기 위해, CQRS 기반으로 읽기와 쓰기 경로를 분리한 모빌리티 관제형 클라우드 시스템입니다.
 
-```mermaid
-graph LR
-    Vehicle(차량 단말/Generator) --> Ingest[Ingest API]
-    Ingest --> Kafka((Kafka))
+---
+![아키텍처](./assets/image.png)
 
-    subgraph "Write Path"
-        Kafka --> MongoConsumer[Mongo Consumer]
-        MongoConsumer --> MongoDB[(MongoDB)]
-    end
-
-    subgraph "Read Path"
-        Kafka --> RedisConsumer[Redis Consumer]
-        RedisConsumer --> Redis[(Redis)]
-        Redis --> QueryAPI[Query API]
-    end
-
-    QueryAPI --> Frontend[React Frontend]
- ```
 
 ---
 
